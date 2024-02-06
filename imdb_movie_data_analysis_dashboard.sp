@@ -138,14 +138,15 @@ query "top_rated_movies" {
 
 query "movies_by_rating_range" {
   sql = <<-EOQ
-    select case 
-            when Rating >= 9 then '9+'
-            when Rating >= 8 then '8-8.9'
-            when Rating >= 7 then '7-7.9'
-            when Rating >= 6 then '6-6.9'
-            else 'Below 6'
-          end as "Rating Range",
-          count(*) as "Number of Movies"
+    select 
+      case 
+        when Rating >= 9 then '9+'
+        when Rating >= 8 then '8-8.9'
+        when Rating >= 7 then '7-7.9'
+        when Rating >= 6 then '6-6.9'
+        else 'Below 6'
+      end as "Rating Range",
+        count(*) as "Number of Movies"
     from IMDB
     group by "Rating Range";
   EOQ
@@ -153,45 +154,61 @@ query "movies_by_rating_range" {
 
 query "distribution_of_metacritic_scores" {
   sql = <<-EOQ
-    select case 
-            when MetaCritic >= 90 then '90+'
-            when MetaCritic >= 80 then '80-89'
-            when MetaCritic >= 70 then '70-79'
-            when MetaCritic >= 60 then '60-69'
-            else 'Below 60'
-          end as "MetaCritic Range",
-          count(*) as "Number of Movies"
-    from IMDB
-    group by "MetaCritic Range";
+    select 
+      case 
+        when MetaCritic >= 90 then '90+'
+        when MetaCritic >= 80 then '80-89'
+        when MetaCritic >= 70 then '70-79'
+        when MetaCritic >= 60 then '60-69'
+        else 'Below 60'
+        end as "MetaCritic Range",
+        count(*) as "Number of Movies"
+    from 
+      IMDB
+    group by 
+      "MetaCritic Range";
   EOQ
 }
 
 query "top_earning_movies_worldwide" {
   sql = <<-EOQ
-    select i.title, e.worldwide
-      from earning e
-    join imdb i on e.movie_id = i.movie_id
-      order by e.worldwide desc
+    select 
+      i.title,
+      e.worldwide
+    from 
+      earning e
+      join imdb i on e.movie_id = i.movie_id
+    order by 
+      e.worldwide desc
     limit 5;
   EOQ
 }
 
 query "domestic_vs_worldwide_earnings_comparison" {
   sql = <<-EOQ
-    select i.title, e.domestic, e.worldwide
-      from earning e
-    join imdb i on e.movie_id = i.movie_id
+    select 
+      i.title,
+      e.domestic,
+      e.worldwide
+    from 
+      earning e
+      join imdb i on e.movie_id = i.movie_id
       order by e.worldwide desc
     limit 5;
   EOQ
 }
 query "earnings_by_movie_genre" {
   sql = <<-EOQ
-    select g.genre, sum(e.Worldwide) as "Total Earnings"
-    from genre g
-    join earning e on g.Movie_id = e.Movie_id
-    group by g.genre
-    order by "Total Earnings" desc;
+    select 
+      g.genre,
+      sum(e.Worldwide) as "Total Earnings"
+    from 
+      genre g
+      join earning e on g.Movie_id = e.Movie_id
+    group by 
+      g.genre
+    order by
+      "Total Earnings" desc;
   EOQ
 }
 
@@ -203,13 +220,16 @@ query "international_vs_us_votes_comparison" {
 
 query "genre_popularity_by_age_group" {
   sql = <<-EOQ
-    select g.genre,
+    select
+      g.genre,
       sum(cast(i.cvotesu18 as integer)) as "under_18",
       sum(cast(i.cvotes1829 as integer)) as "18_29",
       sum(cast(i.cvotes3044 as integer)) as "30_44",
       sum(cast(i.cvotes45a as integer)) as "45_plus"
-    from imdb i
-    join genre g on i.movie_id = g.movie_id
-    group by g.genre;
+    from 
+      imdb i
+      join genre g on i.movie_id = g.movie_id
+    group by 
+      g.genre;
   EOQ
 }
