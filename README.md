@@ -4,27 +4,27 @@ Analyze movie ratings, budgets, and box office performance data using SQLite and
 
 ## Installation
 
-Download and install Powerpipe (https://powerpipe.io/downloads) and SQLite(https://www.sqlite.org/download.html). Or use Brew:
+Download and install Powerpipe (https://powerpipe.io/downloads). Or use Brew:
 
 ```sh
 brew install powerpipe
 ```
 
-## Setup:
+## Get the Dataset
 
 Download the Movie Data Analytics Dataset (https://www.kaggle.com/datasets/shahjhanalam/movie-data-analytics-dataset/data).
 
-And unzip the file to a directory.
+Unzip the file to current directory.
 
 ```sh
 unzip archive.zip
 ```
 
-## Clone:
+## Clone the Mod Repository
 
 ```sh
-git clone https://github.com/turbot/powerpipe-mod-movie-data-analytics.git
-cd powerpipe-mod-movie-data-analytics
+git clone https://github.com/turbot/powerpipe-mod-imdb.git
+cd powerpipe-mod-imdb
 ```
 
 ## Usage

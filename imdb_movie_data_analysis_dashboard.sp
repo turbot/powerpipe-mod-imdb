@@ -31,7 +31,7 @@ dashboard "imdb_movie_data_analysis_dashboard" {
 
     title = "Movie Ratings and Critical Acclaim"
     
-    chart {
+    table {
       title = "Top Rated Movies"
       query = query.top_rated_movies
       type  = "bar"
@@ -46,9 +46,9 @@ dashboard "imdb_movie_data_analysis_dashboard" {
     }
 
     chart {
-      title = "Distribution of MetaCritic Scores"
+      title = "Distribution of Metacritic Scores"
       query = query.distribution_of_metacritic_scores
-      type  = "pie"
+      type  = "donut"
       width = 4
     }
 
@@ -61,21 +61,21 @@ dashboard "imdb_movie_data_analysis_dashboard" {
     chart {
       title = "Top Earning Movies Worldwide"
       query = query.top_earning_movies_worldwide
-      type  = "bar"
+      type = "column"
       width = 4
     }
 
     chart {
       title = "Domestic vs Worldwide Earnings Comparison"
       query = query.domestic_vs_worldwide_earnings_comparison
-      type  = "bar"
+      type = "column"
       width = 4
     }
 
     chart {
       title = "Earnings by Movie Genre"
       query = query.earnings_by_movie_genre
-      type  = "bar"
+      type = "column"
       width = 4
     }
 
@@ -95,7 +95,7 @@ dashboard "imdb_movie_data_analysis_dashboard" {
     chart {
       title = "Genre Popularity by Age Group"
       query = query.genre_popularity_by_age_group
-      type  = "bar"
+      type = "column"
       width = 6
     }
 
@@ -156,17 +156,17 @@ query "distribution_of_metacritic_scores" {
   sql = <<-EOQ
     select 
       case 
-        when MetaCritic >= 90 then '90+'
-        when MetaCritic >= 80 then '80-89'
-        when MetaCritic >= 70 then '70-79'
-        when MetaCritic >= 60 then '60-69'
+        when Metacritic >= 90 then '90+'
+        when Metacritic >= 80 then '80-89'
+        when Metacritic >= 70 then '70-79'
+        when Metacritic >= 60 then '60-69'
         else 'Below 60'
-        end as "MetaCritic Range",
+        end as "Metacritic Range",
         count(*) as "Number of Movies"
     from 
       IMDB
     group by 
-      "MetaCritic Range";
+      "Metacritic Range";
   EOQ
 }
 
