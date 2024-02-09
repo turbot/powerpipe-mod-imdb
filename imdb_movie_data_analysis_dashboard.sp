@@ -63,6 +63,18 @@ dashboard "imdb_movie_data_analysis_dashboard" {
       query = query.top_earning_movies_worldwide
       type = "column"
       width = 4
+      axes {
+        x {
+          title { 
+            value = "Title" 
+          }
+        }
+        y {
+          title {
+            value = "Worldwide Earnings"
+          }
+        }
+      }
     }
 
     chart {
@@ -70,6 +82,18 @@ dashboard "imdb_movie_data_analysis_dashboard" {
       query = query.domestic_vs_worldwide_earnings_comparison
       type = "column"
       width = 4
+      axes {
+        x {
+          title {
+            value = "Title"
+          }
+        }
+        y {
+          title {
+            value = "Earnings"
+          }
+        }
+      }
     }
 
     chart {
@@ -77,8 +101,19 @@ dashboard "imdb_movie_data_analysis_dashboard" {
       query = query.earnings_by_movie_genre
       type = "column"
       width = 4
+      axes {
+        x {
+          title {
+            value = "Genre"
+          }
+        }
+        y {
+          title {
+            value = "Total Earnings"
+            }
+        }
+      }
     }
-
   }
 
   container {
@@ -90,6 +125,18 @@ dashboard "imdb_movie_data_analysis_dashboard" {
       query = query.international_vs_us_votes_comparison
       type  = "bar"
       width = 6
+      axes {
+        x {
+          title {
+            value = "Title"
+          }
+        }
+        y {
+          title {
+            value = "Votes"
+          }
+        }
+      }
     }
 
     chart {
@@ -97,6 +144,18 @@ dashboard "imdb_movie_data_analysis_dashboard" {
       query = query.genre_popularity_by_age_group
       type = "column"
       width = 6
+      axes {
+        x {
+          title {
+            value = "Genre"
+          }
+        }
+        y {
+          title {
+            value = "Votes"
+          }
+        }
+      }
     }
 
   }
