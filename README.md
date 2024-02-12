@@ -1,4 +1,4 @@
-# IMDB Movie Data Analysis Dashboard
+# IMDB Movie Data Analysis Mod for PowerPipe
 
 Analyze movie ratings, budgets, and box office performance data using SQLite and PowerPipe.
 
