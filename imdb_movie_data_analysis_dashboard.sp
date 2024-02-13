@@ -157,6 +157,13 @@ dashboard "imdb_movie_data_analysis_dashboard" {
         }
       }
     }
+
+    chart {
+      title = "Movie Profit Comparison"
+      width = 12
+      type  = "line"
+      query = query.imdb_movie_profit_comparison
+    }
   }
 }
 
@@ -255,6 +262,7 @@ query "domestic_vs_worldwide_earnings_comparison" {
     limit 5;
   EOQ
 }
+
 query "earnings_by_movie_genre" {
   sql = <<-EOQ
     select 
@@ -289,5 +297,19 @@ query "genre_popularity_by_age_group" {
       join genre g on i.movie_id = g.movie_id
     group by 
       g.genre;
+  EOQ
+}
+
+query "imdb_movie_profit_comparison" {
+  sql = <<-EOQ
+    select
+      i.title as "Movie",
+      (e.worldwide - i.budget) as "Profit"
+    from
+      imdb as i
+      join earning as e on i.movie_id = e.movie_id
+    order by 
+      "Profit" desc
+      ;
   EOQ
 }
