@@ -222,8 +222,8 @@ query "top_rated_movies" {
 
 query "movies_by_rating_range" {
   sql = <<-EOQ
-    select 
-      case 
+    select
+      case
         when Rating >= 9 then '9+'
         when Rating >= 8 then '8-8.9'
         when Rating >= 7 then '7-7.9'
@@ -231,17 +231,17 @@ query "movies_by_rating_range" {
         else 'Below 6'
       end as "Rating Range",
         count(*) as "Number of Movies"
-    from 
+    from
       IMDB
-    group by 
+    group by
       "Rating Range";
   EOQ
 }
 
 query "distribution_of_metacritic_scores" {
   sql = <<-EOQ
-    select 
-      case 
+    select
+      case
         when Metacritic >= 90 then '90+'
         when Metacritic >= 80 then '80-89'
         when Metacritic >= 70 then '70-79'
@@ -249,19 +249,19 @@ query "distribution_of_metacritic_scores" {
         else 'Below 60'
         end as "Metacritic Range",
         count(*) as "Number of Movies"
-    from 
+    from
       IMDB
-    group by 
+    group by
       "Metacritic Range";
   EOQ
 }
 
 query "top_earning_movies_worldwide" {
   sql = <<-EOQ
-    select 
+    select
       i.title,
       e.worldwide
-    from 
+    from
       earning e
       join imdb i on e.movie_id = i.movie_id
     order by 
@@ -272,11 +272,11 @@ query "top_earning_movies_worldwide" {
 
 query "domestic_vs_worldwide_earnings_comparison" {
   sql = <<-EOQ
-    select 
+    select
       i.title,
       e.domestic,
       e.worldwide
-    from 
+    from
       earning e
       join imdb i on e.movie_id = i.movie_id
     order by
@@ -290,10 +290,10 @@ query "earnings_by_movie_genre" {
     select 
       g.genre,
       sum(e.Worldwide) as "Total Earnings"
-    from 
+    from
       genre g
       join earning e on g.Movie_id = e.Movie_id
-    group by 
+    group by
       g.genre
     order by
       "Total Earnings" desc;
@@ -322,10 +322,10 @@ query "genre_popularity_by_age_group" {
       sum(cast(i.cvotes1829 as integer)) as "18_29",
       sum(cast(i.cvotes3044 as integer)) as "30_44",
       sum(cast(i.cvotes45a as integer)) as "45_plus"
-    from 
+    from
       imdb i
       join genre g on i.movie_id = g.movie_id
-    group by 
+    group by
       g.genre;
   EOQ
 }
@@ -338,7 +338,7 @@ query "imdb_movie_profit_comparison" {
     from
       imdb as i
       join earning as e on i.movie_id = e.movie_id
-    order by 
+    order by
       "Profit" desc;
   EOQ
 }
