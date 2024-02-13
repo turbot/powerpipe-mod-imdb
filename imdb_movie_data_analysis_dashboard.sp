@@ -3,9 +3,9 @@ dashboard "imdb_movie_data_analysis_dashboard" {
   title = "IMDB Movie Data Analysis Dashboard"
 
   container {
-    
+
     title = "Overview"
-    
+
     card {
       query = query.total_movies
       width = 3
@@ -30,7 +30,7 @@ dashboard "imdb_movie_data_analysis_dashboard" {
   container {
 
     title = "Movie Ratings and Critical Acclaim"
-    
+
     table {
       title = "Top Rated Movies"
       query = query.top_rated_movies
@@ -61,12 +61,12 @@ dashboard "imdb_movie_data_analysis_dashboard" {
     chart {
       title = "Top Earning Movies Worldwide"
       query = query.top_earning_movies_worldwide
-      type = "column"
+      type  = "column"
       width = 4
       axes {
         x {
-          title { 
-            value = "Title" 
+          title {
+            value = "Title"
           }
         }
         y {
@@ -80,7 +80,7 @@ dashboard "imdb_movie_data_analysis_dashboard" {
     chart {
       title = "Domestic vs Worldwide Earnings Comparison"
       query = query.domestic_vs_worldwide_earnings_comparison
-      type = "column"
+      type  = "column"
       width = 4
       axes {
         x {
@@ -99,7 +99,7 @@ dashboard "imdb_movie_data_analysis_dashboard" {
     chart {
       title = "Earnings by Movie Genre"
       query = query.earnings_by_movie_genre
-      type = "column"
+      type  = "column"
       width = 4
       axes {
         x {
@@ -110,7 +110,7 @@ dashboard "imdb_movie_data_analysis_dashboard" {
         y {
           title {
             value = "Total Earnings"
-            }
+          }
         }
       }
     }
@@ -142,7 +142,7 @@ dashboard "imdb_movie_data_analysis_dashboard" {
     chart {
       title = "Genre Popularity by Age Group"
       query = query.genre_popularity_by_age_group
-      type = "column"
+      type  = "column"
       width = 6
       axes {
         x {
@@ -171,25 +171,37 @@ dashboard "imdb_movie_data_analysis_dashboard" {
 
 query "total_movies" {
   sql = <<-EOQ
-    select count(*) as "Total Movies" from IMDB;
+    select
+      count(*) as "Total Movies"
+    from
+      IMDB;
   EOQ
 }
 
 query "average_worldwide_earnings" {
   sql = <<-EOQ
-    select avg(Worldwide) as "Average Worldwide Earnings" from earning;
+    select
+      avg(Worldwide) as "Average Worldwide Earnings"
+    from
+      earning;
   EOQ
 }
 
 query "average_domestic_earnings" {
   sql = <<-EOQ
-    select avg(Domestic) as "Average Domestic Earnings" from earning;
+    select
+      avg(Domestic) as "Average Domestic Earnings"
+    from
+      earning;
   EOQ
 }
 
 query "average_budget" {
   sql = <<-EOQ
-    select avg(Budget) as "Average Budget" from IMDB;
+    select
+      avg(Budget) as "Average Budget"
+    from
+      IMDB;
   EOQ
 }
 
@@ -197,7 +209,14 @@ query "average_budget" {
 
 query "top_rated_movies" {
   sql = <<-EOQ
-    select Title, Rating from IMDB order by Rating desc limit 5;
+    select
+      Title,
+      Rating
+    from
+      IMDB
+    order by
+      Rating desc
+    limit 5;
   EOQ
 }
 
@@ -212,8 +231,10 @@ query "movies_by_rating_range" {
         else 'Below 6'
       end as "Rating Range",
         count(*) as "Number of Movies"
-    from IMDB
-    group by "Rating Range";
+    from 
+      IMDB
+    group by 
+      "Rating Range";
   EOQ
 }
 
@@ -258,7 +279,8 @@ query "domestic_vs_worldwide_earnings_comparison" {
     from 
       earning e
       join imdb i on e.movie_id = i.movie_id
-      order by e.worldwide desc
+    order by
+      e.worldwide desc
     limit 5;
   EOQ
 }
@@ -280,7 +302,15 @@ query "earnings_by_movie_genre" {
 
 query "international_vs_us_votes_comparison" {
   sql = <<-EOQ
-    select Title, CVotesUS as "US Votes", CVotesnUS as "International Votes" from IMDB order by "US Votes" desc limit 5;
+    select
+      Title,
+      CVotesUS as "US Votes",
+      CVotesnUS as "International Votes"
+    from
+      IMDB
+    order by
+      "US Votes" desc
+    limit 5;
   EOQ
 }
 
@@ -309,7 +339,6 @@ query "imdb_movie_profit_comparison" {
       imdb as i
       join earning as e on i.movie_id = e.movie_id
     order by 
-      "Profit" desc
-      ;
+      "Profit" desc;
   EOQ
 }
