@@ -28,7 +28,7 @@ Download the [Movie Data Analytics Dataset](https://www.kaggle.com/datasets/shah
 Unzip the file to the cloned mod directory.
 
 ```sh
-unzip /Users/root/Downloads/archive.zip
+unzip /Users/username/Downloads/archive.zip
 ```
 
 ## Usage
