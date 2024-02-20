@@ -9,21 +9,25 @@ dashboard "imdb_movie_data_analysis_dashboard" {
     card {
       query = query.total_movies
       width = 3
+      type  = "info"
     }
 
     card {
       query = query.average_worldwide_earnings
       width = 3
+      type  = "info"
     }
 
     card {
       query = query.average_domestic_earnings
       width = 3
+      type  = "info"
     }
 
     card {
       query = query.average_budget
       width = 3
+      type  = "info"
     }
   }
 

@@ -13,24 +13,28 @@ dashboard "imdb_movie_detail" {
     card {
       query = query.imdb_movie_rating
       width = 3
+      type  = "info"
       args  = [self.input.movie_id.value]
     }
 
     card {
       query = query.imdb_movie_earning_worldwide
       width = 3
+      type  = "info"
       args  = [self.input.movie_id.value]
     }
 
     card {
       query = query.imdb_movie_earning_domestic
       width = 3
+      type  = "info"
       args  = [self.input.movie_id.value]
     }
 
     card {
       query = query.imdb_movie_runtime
       width = 3
+      type  = "info"
       args  = [self.input.movie_id.value]
     }
 
