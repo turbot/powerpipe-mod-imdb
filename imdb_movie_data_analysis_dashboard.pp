@@ -63,18 +63,6 @@ dashboard "imdb_movie_data_analysis_dashboard" {
       query = query.top_earning_movies_worldwide
       type  = "column"
       width = 4
-      axes {
-        x {
-          title {
-            value = "Title"
-          }
-        }
-        y {
-          title {
-            value = "Worldwide Earnings"
-          }
-        }
-      }
     }
 
     chart {
@@ -82,18 +70,6 @@ dashboard "imdb_movie_data_analysis_dashboard" {
       query = query.domestic_vs_worldwide_earnings_comparison
       type  = "column"
       width = 4
-      axes {
-        x {
-          title {
-            value = "Title"
-          }
-        }
-        y {
-          title {
-            value = "Earnings"
-          }
-        }
-      }
     }
 
     chart {
@@ -101,18 +77,6 @@ dashboard "imdb_movie_data_analysis_dashboard" {
       query = query.earnings_by_movie_genre
       type  = "column"
       width = 4
-      axes {
-        x {
-          title {
-            value = "Genre"
-          }
-        }
-        y {
-          title {
-            value = "Total Earnings"
-          }
-        }
-      }
     }
   }
 
@@ -128,11 +92,6 @@ dashboard "imdb_movie_data_analysis_dashboard" {
       axes {
         x {
           title {
-            value = "Title"
-          }
-        }
-        y {
-          title {
             value = "Votes"
           }
         }
@@ -144,18 +103,6 @@ dashboard "imdb_movie_data_analysis_dashboard" {
       query = query.genre_popularity_by_age_group
       type  = "column"
       width = 6
-      axes {
-        x {
-          title {
-            value = "Genre"
-          }
-        }
-        y {
-          title {
-            value = "Votes"
-          }
-        }
-      }
     }
 
     chart {
@@ -234,7 +181,9 @@ query "movies_by_rating_range" {
     from
       IMDB
     group by
-      "Rating Range";
+      "Rating Range"
+    order by
+      "Rating Range" desc;
   EOQ
 }
 
@@ -252,7 +201,9 @@ query "distribution_of_metacritic_scores" {
     from
       IMDB
     group by
-      "Metacritic Range";
+      "Metacritic Range"
+    order by
+      "Number of Movies" desc;
   EOQ
 }
 
@@ -280,7 +231,7 @@ query "domestic_vs_worldwide_earnings_comparison" {
       earning e
       join imdb i on e.movie_id = i.movie_id
     order by
-      e.worldwide desc
+      e.worldwide, e.domestic desc
     limit 5;
   EOQ
 }
@@ -309,7 +260,7 @@ query "international_vs_us_votes_comparison" {
     from
       IMDB
     order by
-      "US Votes" desc
+      "International Votes", "US Votes" desc
     limit 5;
   EOQ
 }
@@ -326,7 +277,9 @@ query "genre_popularity_by_age_group" {
       imdb i
       join genre g on i.movie_id = g.movie_id
     group by
-      g.genre;
+      g.genre
+    order by
+      "under_18", "18_29", "30_44", "45_plus" desc;
   EOQ
 }
 

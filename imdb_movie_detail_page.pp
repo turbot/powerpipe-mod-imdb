@@ -44,22 +44,41 @@ dashboard "imdb_movie_detail" {
       table {
         title = "Overview"
         type  = "line"
-        width = 4
+        width = 6
         query = query.imdb_movie_overview
         args  = [self.input.movie_id.value]
       }
 
+      chart {
+        title    = "Votes Distribution by Gender"
+        width    = 6
+        type     = "column"
+        grouping = "compare"
+        query    = query.imdb_movie_votes_comparison
+        args     = [self.input.movie_id.value]
+        axes {
+          x {
+            title {
+              value = "Age Group"
+            }
+          }
+          y {
+            title {
+              value = "Votes"
+            }
+          }
+        }
+      }
+
       table {
         title = "Votes Summary"
-        width = 8
+        width = 6
         query = query.imdb_movie_votes_summary
         args  = [self.input.movie_id.value]
       }
 
     }
-
   }
-
 }
 
 # Input queries
@@ -114,18 +133,6 @@ query "imdb_movie_earning_domestic" {
   EOQ
 }
 
-query "imdb_movie_genre" {
-  sql = <<-EOQ
-    select
-      'Genres' as label,
-      string_agg(genre, ', ') as value
-    from
-      genre
-    where
-      movie_id = $1;
-  EOQ
-}
-
 query "imdb_movie_runtime" {
   sql = <<-EOQ
     select
@@ -139,6 +146,7 @@ query "imdb_movie_runtime" {
 }
 
 # Other detail page queries
+
 query "imdb_movie_overview" {
   sql = <<-EOQ
     select
@@ -163,8 +171,7 @@ query "imdb_movie_overview" {
 query "imdb_movie_votes_summary" {
   sql = <<-EOQ
     select
-      CVotesMale as "Votes Male",
-      CVotesFemale as "Votes Female",
+      TotalVotes as "Total Votes",
       CVotesU18 as "Votes Under 18",
       CVotes1829 as "Votes 18-29",
       CVotes3044 as "Votes 30-44",
@@ -176,3 +183,42 @@ query "imdb_movie_votes_summary" {
   EOQ
 }
 
+query "imdb_movie_votes_comparison" {
+  sql = <<-EOQ
+    select
+      'Under 18' as "Age Group",
+      CVotesU18M as "Male",
+      CVotesU18F as "Female"
+    from
+      imdb
+    where
+      movie_id = $1
+    union
+    select
+      '18-29' as "Age Group",
+      CVotes1829M as "Male",
+      CVotes1829F as "Female"
+    from
+      imdb
+    where
+      movie_id = $1
+    union
+    select
+      '30-44' as "Age Group",
+      CVotes3044M as "Male",
+      CVotes3044F as "Female"
+    from
+      imdb
+    where
+      movie_id = $1
+    union
+    select
+      '45+' as "Age Group",
+      CVotes45AM as "Male",
+      CVotes45AF as "Female"
+    from
+      imdb
+    where
+      movie_id = $1;
+  EOQ
+}
