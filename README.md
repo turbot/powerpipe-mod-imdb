@@ -21,9 +21,14 @@ cd powerpipe-mod-imdb
 
 ## Get the Dataset
 
-Log in to Kaggle, download the [Movie Data Analytics Dataset](https://www.kaggle.com/datasets/shahjhanalam/movie-data-analytics-dataset/data).
+Log in to Kaggle:
+  - Navigate to [Kaggle's website](https://www.kaggle.com/).
+  - Log in using your credentials. If you don’t have an account, you’ll need to create one using the options available.
 
-Unzip the file to the cloned mod directory.
+Download the Dataset:
+  - Click the `Download` button on the dataset [page](https://www.kaggle.com/datasets/shahjhanalam/movie-data-analytics-dataset/data).
+
+Unzip the downloaded file to the cloned mod directory, replace `username` with your username:
 
 ```sh
 unzip /Users/username/Downloads/archive.zip
