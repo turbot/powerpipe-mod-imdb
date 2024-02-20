@@ -19,20 +19,21 @@ git clone https://github.com/turbot/powerpipe-mod-imdb.git
 cd powerpipe-mod-imdb
 ```
 
-## Get the Dataset
+## Install the Dataset
 
-Log in to Kaggle:
-  - Navigate to [Kaggle's website](https://www.kaggle.com/).
-  - Log in using your credentials. If you don’t have an account, you’ll need to create one using the options available.
+- Visit the [IMDB Dataset Page](https://www.kaggle.com/datasets/shahjhanalam/movie-data-analytics-dataset/data).
 
-Download the Dataset:
-  - Click the `Download` button on the dataset [page](https://www.kaggle.com/datasets/shahjhanalam/movie-data-analytics-dataset/data).
+- Click on `Download` (Free signup to Kaggle is required).
 
-Unzip the downloaded file to the cloned mod directory, replace `username` with your username:
+- Unzip the Downloaded File:
 
-```sh
-unzip /Users/username/Downloads/archive.zip
-```
+  - For Mac/Linux:
+    - Use the command `unzip ~/Downloads/archive.zip` to extract the file.
+
+  - For Windows:
+
+    - Navigate to the folder containing the downloaded ZIP file, usually the Downloads folder.
+    - Right-click on the ZIP file and choose `Extract All...` or `Extract Here` depending on your preference. Follow the on-screen instructions to complete the extraction.
 
 ## Usage
 
