@@ -31,7 +31,6 @@ cd powerpipe-mod-imdb
     - Use the command `unzip ~/Downloads/archive.zip` to extract the file.
 
   - For Windows:
-
     - Navigate to the folder containing the downloaded ZIP file, usually the Downloads folder.
     - Right-click on the ZIP file and choose `Extract All...` or `Extract Here` depending on your preference. Follow the on-screen instructions to complete the extraction.
 
@@ -41,6 +40,12 @@ Run the dashboard and specify the DB connection string:
 
 ```sh
 powerpipe server --database sqlite:movie.sqlite
+```
+
+If you have extracted the file in any other location then you need to provide the full path like below:
+
+```sh
+powerpipe server --database sqlite:///path/to/the/file/file.sqlite
 ```
 
 ## Open Source & Contributing
