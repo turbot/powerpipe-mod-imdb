@@ -37,7 +37,6 @@ dashboard "imdb_movie_detail" {
       type  = "info"
       args  = [self.input.movie_id.value]
     }
-
   }
 
   container {
@@ -60,18 +59,6 @@ dashboard "imdb_movie_detail" {
         grouping = "compare"
         query    = query.imdb_movie_votes_comparison
         args     = [self.input.movie_id.value]
-        axes {
-          x {
-            title {
-              value = "Age Group"
-            }
-          }
-          y {
-            title {
-              value = "Votes"
-            }
-          }
-        }
       }
 
       table {
@@ -80,7 +67,6 @@ dashboard "imdb_movie_detail" {
         query = query.imdb_movie_votes_summary
         args  = [self.input.movie_id.value]
       }
-
     }
   }
 }
@@ -170,7 +156,6 @@ query "imdb_movie_overview" {
       i.title, i.rating, i.totalvotes, i.budget, i.runtime, i.metaCritic;
   EOQ
 }
-
 
 query "imdb_movie_votes_summary" {
   sql = <<-EOQ

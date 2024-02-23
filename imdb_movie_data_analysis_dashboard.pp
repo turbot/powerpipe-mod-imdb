@@ -55,7 +55,6 @@ dashboard "imdb_movie_data_analysis_dashboard" {
       type  = "donut"
       width = 4
     }
-
   }
 
   container {
@@ -93,13 +92,6 @@ dashboard "imdb_movie_data_analysis_dashboard" {
       query = query.international_vs_us_votes_comparison
       type  = "bar"
       width = 6
-      axes {
-        x {
-          title {
-            value = "Votes"
-          }
-        }
-      }
     }
 
     chart {
