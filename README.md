@@ -4,7 +4,9 @@ Analyze movie ratings, budgets, and box office performance data using SQLite and
 
 ![imdb_dashboard_page](https://github.com/turbot/powerpipe-mod-imdb/assets/72413708/978a375c-42e1-4785-a7a3-89dd755f75ce)
 
-## Installation
+## Getting Started
+
+### Installation
 
 Download and install Powerpipe (https://powerpipe.io/downloads). Or use Brew:
 
@@ -12,27 +14,24 @@ Download and install Powerpipe (https://powerpipe.io/downloads). Or use Brew:
 brew install turbot/tap/powerpipe
 ```
 
-## Clone the Mod Repository
+Clone:
 
 ```sh
 git clone https://github.com/turbot/powerpipe-mod-imdb.git
 cd powerpipe-mod-imdb
 ```
 
-## Install the Dataset
+Download the dataset:
 
-- Visit the [IMDB Dataset Page](https://www.kaggle.com/datasets/shahjhanalam/movie-data-analytics-dataset/data).
+- Signup to [Kaggle](https://www.kaggle.com/account/login?phase=startRegisterTab&returnUrl=%2Fdatasets) 
+- Visit the [IMDB Dataset Page](https://www.kaggle.com/datasets/shahjhanalam/movie-data-analytics-dataset/data)
+- Click on `Download`
 
-- Click on `Download` (Free signup to Kaggle is required).
+Extract the downloaded file in the current directory:
 
-- Unzip the Downloaded File:
-
-  - For Mac/Linux:
-    - Use the command `unzip ~/Downloads/archive.zip` to extract the file.
-
-  - For Windows:
-    - Navigate to the folder containing the downloaded ZIP file, usually the Downloads folder.
-    - Right-click on the ZIP file and choose `Extract All...` or `Extract Here` depending on your preference. Follow the on-screen instructions to complete the extraction.
+```sh
+unzip ~/Downloads/archive.zip
+```
 
 ## Usage
 
@@ -40,12 +39,6 @@ Run the dashboard and specify the DB connection string:
 
 ```sh
 powerpipe server --database sqlite:movie.sqlite
-```
-
-If you have extracted the file in any other location then you need to provide the full path like below:
-
-```sh
-powerpipe server --database sqlite:///path/to/the/file/file.sqlite
 ```
 
 ## Open Source & Contributing
