@@ -1,8 +1,17 @@
-# IMDB Movie Data Analysis Mod for PowerPipe
+# IMDB Movie Insights Mod for PowerPipe
 
 Analyze movie ratings, budgets, and box office performance data using SQLite and PowerPipe.
 
 ![imdb_dashboard_page](https://github.com/turbot/powerpipe-mod-imdb/assets/78197905/40d9dcc6-e33f-4acd-8f22-439b3bec514e)
+
+## Overview
+
+Dashboards can help answer questions like:
+
+- How many movies are present in the database?
+- What is the average worldwide earnings from the movies?
+- What is the average domestic earnings from the movies?
+- What are the top rated movies by IMDB?
 
 ## Getting Started
 
