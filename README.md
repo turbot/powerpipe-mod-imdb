@@ -29,11 +29,8 @@ Clone:
 git clone https://github.com/turbot/powerpipe-mod-imdb.git
 cd powerpipe-mod-imdb
 ```
-### Setup Data
 
-Download the dataset:
-
-- Download the [IMDB Dataset Page](https://www.kaggle.com/datasets/shahjhanalam/movie-data-analytics-dataset/data) (requires signup with [Kaggle](https://www.kaggle.com/))
+Download the [IMDB Dataset Page](https://www.kaggle.com/datasets/shahjhanalam/movie-data-analytics-dataset/data) (requires signup with [Kaggle](https://www.kaggle.com/))
 
 Extract the downloaded file in the current directory:
 
