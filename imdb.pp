@@ -1,6 +1,6 @@
 dashboard "imdb" {
 
-  title         = "IMDb"
+  title         = "IMDb Dashboard"
   documentation = file("./docs/imdb.md")
 
   container {
