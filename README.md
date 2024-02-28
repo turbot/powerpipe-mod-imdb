@@ -1,6 +1,6 @@
-# IMDB Movie Insights Mod for PowerPipe
+# IMDb Mod for Powerpipe
 
-Analyze movie ratings, budgets, and box office performance data using SQLite and PowerPipe.
+Analyze movie ratings, budgets, and box office performance data using SQLite and Powerpipe.
 
 ![imdb_dashboard_page](https://github.com/turbot/powerpipe-mod-imdb/assets/78197905/40d9dcc6-e33f-4acd-8f22-439b3bec514e)
 
@@ -11,7 +11,7 @@ Dashboards can help answer questions like:
 - How many movies are present in the database?
 - What is the average worldwide earnings from the movies?
 - What is the average domestic earnings from the movies?
-- What are the top rated movies by IMDB?
+- What are the top rated movies by IMDb?
 
 ## Getting Started
 
@@ -30,7 +30,7 @@ git clone https://github.com/turbot/powerpipe-mod-imdb.git
 cd powerpipe-mod-imdb
 ```
 
-Download the [IMDB Dataset Page](https://www.kaggle.com/datasets/shahjhanalam/movie-data-analytics-dataset/data) (requires signup with [Kaggle](https://www.kaggle.com/))
+Download the [IMDb Dataset Page](https://www.kaggle.com/datasets/shahjhanalam/movie-data-analytics-dataset/data) (requires signup with [Kaggle](https://www.kaggle.com/))
 
 Extract the downloaded file in the current directory:
 
@@ -59,4 +59,4 @@ This repository is published under the [Apache 2.0 license](https://www.apache.o
 Want to help but not sure where to start? Pick up one of the `help wanted` issues:
 
 - [Powerpipe](https://github.com/turbot/powerpipe/labels/help%20wanted)
-- [IMDB Mod](https://github.com/turbot/powerpipe-mod-imdb/labels/help%20wanted)
+- [IMDb Mod](https://github.com/turbot/powerpipe-mod-imdb/labels/help%20wanted)

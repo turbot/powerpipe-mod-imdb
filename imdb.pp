@@ -1,7 +1,7 @@
-dashboard "imdb_movie_insights_dashboard" {
+dashboard "imdb" {
 
-  title         = "IMDB Movie Insights Dashboard"
-  documentation = file("./docs/imdb_movie_insights_dashboard.md")
+  title         = "IMDb"
+  documentation = file("./docs/imdb.md")
 
   container {
 
@@ -118,7 +118,7 @@ query "imdb_movie_total" {
     select
       count(*) as "Total Movies"
     from
-      IMDB;
+      IMDb;
   EOQ
 }
 
@@ -145,7 +145,7 @@ query "imdb_movie_average_budget" {
     select
       avg(Budget) as "Average Budget"
     from
-      IMDB;
+      IMDb;
   EOQ
 }
 
@@ -157,7 +157,7 @@ query "imdb_movie_top_rated" {
       Title,
       Rating
     from
-      IMDB
+      IMDb
     order by
       Rating desc
     limit 5;
@@ -176,7 +176,7 @@ query "imdb_movie_by_rating_range" {
       end as "Rating Range",
         count(*) as "Number of Movies"
     from
-      IMDB
+      IMDb
     group by
       "Rating Range"
     order by
@@ -196,7 +196,7 @@ query "imdb_movie_distribution_of_metacritic_scores" {
         end as "Metacritic Range",
         count(*) as "Number of Movies"
     from
-      IMDB
+      IMDb
     group by
       "Metacritic Range"
     order by
@@ -255,7 +255,7 @@ query "imdb_movie_international_vs_us_votes_comparison" {
       CVotesUS as "US Votes",
       CVotesnUS as "International Votes"
     from
-      IMDB
+      IMDb
     order by
       "International Votes", "US Votes" desc
     limit 5;
