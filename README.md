@@ -13,11 +13,11 @@ Dashboards can help answer questions like:
 - What is the average domestic earnings from the movies?
 - What are the top rated movies by IMDb?
 
-## Getting Started
-
 ## Documentation
 
 - **[Dashboards →](https://hub.powerpipe.io/mods/turbot/imdb/dashboards)**
+
+## Getting Started
 
 ### Installation
 
