@@ -15,6 +15,10 @@ Dashboards can help answer questions like:
 
 ## Getting Started
 
+## Documentation
+
+- **[Dashboards →](https://hub.steampipe.io/mods/turbot/imdb/dashboards)**
+
 ### Installation
 
 Download and install Powerpipe (https://powerpipe.io/downloads). Or use Brew:
