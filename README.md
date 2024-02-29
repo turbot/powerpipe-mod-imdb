@@ -17,7 +17,7 @@ Dashboards can help answer questions like:
 
 ## Documentation
 
-- **[Dashboards →](https://hub.steampipe.io/mods/turbot/imdb/dashboards)**
+- **[Dashboards →](https://hub.powerpipe.io/mods/turbot/imdb/dashboards)**
 
 ### Installation
 
