@@ -1,6 +1,7 @@
 dashboard "imdb_movie_detail" {
 
-  title = "IMDb Movie Detail"
+  title         = "IMDb Movie Detail"
+  documentation = file("./docs/imdb_movie_detail.md")
 
   input "movie_id" {
     title = "Select a Movie:"

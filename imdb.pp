@@ -1,31 +1,32 @@
-dashboard "imdb_movie_data_analysis_dashboard" {
+dashboard "imdb" {
 
-  title = "IMDB Movie Data Analysis Dashboard"
+  title         = "IMDb Dashboard"
+  documentation = file("./docs/imdb.md")
 
   container {
 
     title = "Overview"
 
     card {
-      query = query.total_movies
+      query = query.imdb_movie_total
       width = 3
       type  = "info"
     }
 
     card {
-      query = query.average_worldwide_earnings
+      query = query.imdb_movie_average_worldwide_earnings
       width = 3
       type  = "info"
     }
 
     card {
-      query = query.average_domestic_earnings
+      query = query.imdb_movie_average_domestic_earnings
       width = 3
       type  = "info"
     }
 
     card {
-      query = query.average_budget
+      query = query.imdb_movie_average_budget
       width = 3
       type  = "info"
     }
@@ -37,21 +38,21 @@ dashboard "imdb_movie_data_analysis_dashboard" {
 
     table {
       title = "Top Rated Movies"
-      query = query.top_rated_movies
+      query = query.imdb_movie_top_rated
       type  = "bar"
       width = 4
     }
 
     chart {
       title = "Movies by Rating Range"
-      query = query.movies_by_rating_range
+      query = query.imdb_movie_by_rating_range
       type  = "pie"
       width = 4
     }
 
     chart {
       title = "Distribution of Metacritic Scores"
-      query = query.distribution_of_metacritic_scores
+      query = query.imdb_movie_distribution_of_metacritic_scores
       type  = "donut"
       width = 4
     }
@@ -63,21 +64,21 @@ dashboard "imdb_movie_data_analysis_dashboard" {
 
     chart {
       title = "Top Earning Movies Worldwide"
-      query = query.top_earning_movies_worldwide
+      query = query.imdb_movie_top_earning_worldwide
       type  = "column"
       width = 4
     }
 
     chart {
       title = "Domestic vs Worldwide Earnings Comparison"
-      query = query.domestic_vs_worldwide_earnings_comparison
+      query = query.imdb_movie_domestic_vs_worldwide_earnings_comparison
       type  = "column"
       width = 4
     }
 
     chart {
       title = "Earnings by Movie Genre"
-      query = query.earnings_by_movie_genre
+      query = query.imdb_moview_earnings_by_genre
       type  = "column"
       width = 4
     }
@@ -89,14 +90,14 @@ dashboard "imdb_movie_data_analysis_dashboard" {
 
     chart {
       title = "International vs US Votes Comparison"
-      query = query.international_vs_us_votes_comparison
+      query = query.imdb_movie_international_vs_us_votes_comparison
       type  = "bar"
       width = 6
     }
 
     chart {
       title = "Genre Popularity by Age Group"
-      query = query.genre_popularity_by_age_group
+      query = query.imdb_movie_genre_popularity_by_age_group
       type  = "column"
       width = 6
     }
@@ -112,16 +113,16 @@ dashboard "imdb_movie_data_analysis_dashboard" {
 
 # Card Queries
 
-query "total_movies" {
+query "imdb_movie_total" {
   sql = <<-EOQ
     select
       count(*) as "Total Movies"
     from
-      IMDB;
+      IMDb;
   EOQ
 }
 
-query "average_worldwide_earnings" {
+query "imdb_movie_average_worldwide_earnings" {
   sql = <<-EOQ
     select
       avg(Worldwide) as "Average Worldwide Earnings"
@@ -130,7 +131,7 @@ query "average_worldwide_earnings" {
   EOQ
 }
 
-query "average_domestic_earnings" {
+query "imdb_movie_average_domestic_earnings" {
   sql = <<-EOQ
     select
       avg(Domestic) as "Average Domestic Earnings"
@@ -139,31 +140,31 @@ query "average_domestic_earnings" {
   EOQ
 }
 
-query "average_budget" {
+query "imdb_movie_average_budget" {
   sql = <<-EOQ
     select
       avg(Budget) as "Average Budget"
     from
-      IMDB;
+      IMDb;
   EOQ
 }
 
 # Chart Queries
 
-query "top_rated_movies" {
+query "imdb_movie_top_rated" {
   sql = <<-EOQ
     select
       Title,
       Rating
     from
-      IMDB
+      IMDb
     order by
       Rating desc
     limit 5;
   EOQ
 }
 
-query "movies_by_rating_range" {
+query "imdb_movie_by_rating_range" {
   sql = <<-EOQ
     select
       case
@@ -175,7 +176,7 @@ query "movies_by_rating_range" {
       end as "Rating Range",
         count(*) as "Number of Movies"
     from
-      IMDB
+      IMDb
     group by
       "Rating Range"
     order by
@@ -183,7 +184,7 @@ query "movies_by_rating_range" {
   EOQ
 }
 
-query "distribution_of_metacritic_scores" {
+query "imdb_movie_distribution_of_metacritic_scores" {
   sql = <<-EOQ
     select
       case
@@ -195,7 +196,7 @@ query "distribution_of_metacritic_scores" {
         end as "Metacritic Range",
         count(*) as "Number of Movies"
     from
-      IMDB
+      IMDb
     group by
       "Metacritic Range"
     order by
@@ -203,7 +204,7 @@ query "distribution_of_metacritic_scores" {
   EOQ
 }
 
-query "top_earning_movies_worldwide" {
+query "imdb_movie_top_earning_worldwide" {
   sql = <<-EOQ
     select
       i.title,
@@ -217,7 +218,7 @@ query "top_earning_movies_worldwide" {
   EOQ
 }
 
-query "domestic_vs_worldwide_earnings_comparison" {
+query "imdb_movie_domestic_vs_worldwide_earnings_comparison" {
   sql = <<-EOQ
     select
       i.title,
@@ -232,7 +233,7 @@ query "domestic_vs_worldwide_earnings_comparison" {
   EOQ
 }
 
-query "earnings_by_movie_genre" {
+query "imdb_moview_earnings_by_genre" {
   sql = <<-EOQ
     select 
       g.genre,
@@ -247,21 +248,21 @@ query "earnings_by_movie_genre" {
   EOQ
 }
 
-query "international_vs_us_votes_comparison" {
+query "imdb_movie_international_vs_us_votes_comparison" {
   sql = <<-EOQ
     select
       Title,
       CVotesUS as "US Votes",
       CVotesnUS as "International Votes"
     from
-      IMDB
+      IMDb
     order by
       "International Votes", "US Votes" desc
     limit 5;
   EOQ
 }
 
-query "genre_popularity_by_age_group" {
+query "imdb_movie_genre_popularity_by_age_group" {
   sql = <<-EOQ
     select
       g.genre,
