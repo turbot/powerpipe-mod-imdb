@@ -2,7 +2,7 @@
 
 Analyze movie ratings, budgets, and box office performance data using SQLite and Powerpipe.
 
-![image](https://github.com/turbot/powerpipe-mod-imdb/blob/add-powerpipe-insights-dashboard/docs/imdb_dashboard_screenshot.png)
+![image](https://github.com/turbot/powerpipe-mod-imdb/blob/add-powerpipe-dashboard/docs/imdb_dashboard_screenshot.png)
 
 ## Overview
 
