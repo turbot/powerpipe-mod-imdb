@@ -27,11 +27,13 @@ Download and install Powerpipe (https://powerpipe.io/downloads). Or use Brew:
 brew install turbot/tap/powerpipe
 ```
 
-Clone:
+Install the mod:
 
 ```sh
-git clone https://github.com/turbot/powerpipe-mod-imdb.git
-cd powerpipe-mod-imdb
+mkdir dashboards
+cd dashboards
+powerpipe mod init
+powerpipe mod install github.com/turbot/powerpipe-mod-imdb
 ```
 
 Download the [IMDb Dataset Page](https://www.kaggle.com/datasets/shahjhanalam/movie-data-analytics-dataset/versions/1) (requires signup with [Kaggle](https://www.kaggle.com/))
