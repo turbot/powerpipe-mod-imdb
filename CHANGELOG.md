@@ -3,5 +3,5 @@
 _What's new?_
 
 - New dashboard:
-  - IMDb Dashboard. ([#1](https://github.com/turbot/powerpipe-mod-imdb/pull/1))
-  - IMDb Movie Detail. ([#1](https://github.com/turbot/powerpipe-mod-imdb/pull/1))
+  - [IMDb Dashboard](https://hub.powerpipe.io/mods/turbot/powerpipe-mod-imdb/dashboard.imdb)
+  - [IMDb Movie Detail](https://hub.powerpipe.io/mods/turbot/powerpipe-mod-imdb/dashboard.imdb_movie_detail)
