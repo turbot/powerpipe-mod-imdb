@@ -1,6 +1,6 @@
 # IMDb Mod for Powerpipe
 
-Analyze movie ratings, budgets, and box office performance data for [IMDb](https://imdb.com) using [SQLite](https://sqlite.org) and [Powerpipe](https://powerpipe.io).
+View dashboards to analyze [IMDb](https://imdb.com) movie ratings, budgets, box office performances, and more.
 
 ![image](https://raw.githubusercontent.com/turbot/powerpipe-mod-imdb/main/docs/imdb_dashboard_screenshot.png)
 
